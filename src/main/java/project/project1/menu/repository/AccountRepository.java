@@ -5,4 +5,5 @@ import project.project1.menu.entity.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     Account getByUsername(int username);
+    void deleteByUsername(int username);
 }
