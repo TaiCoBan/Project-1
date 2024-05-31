@@ -27,7 +27,7 @@ public class SecurityConfig {
                         request -> request
                                 .requestMatchers("/").permitAll()
                                 .requestMatchers("/secured").hasRole("USER")
-                                .requestMatchers("/student/**").permitAll()
+                                .requestMatchers("/students/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())

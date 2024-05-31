@@ -8,6 +8,8 @@ import project.project1.menu.entity.Student;
 import project.project1.menu.repository.AccountRepository;
 import project.project1.menu.repository.StudentRepository;
 
+import java.util.List;
+
 @Service
 public class StudentService {
     @Autowired
@@ -35,5 +37,15 @@ public class StudentService {
 
     public Student get(int id) {
         return studentRepository.findById(id);
+    }
+
+    public List<Student> getAll() {return studentRepository.findAll();}
+
+    public void update(Student student) {
+        Account account = accountRepository.getByUsername(student.getId());
+        account.setUsername(student.getId());
+        account.setPassword(passwordEncoder.encode(student.getBirth()+""));
+        studentRepository.save(student);
+        accountRepository.save(account);
     }
 }
